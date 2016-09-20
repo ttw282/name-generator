@@ -8,8 +8,12 @@
 				alert("hello!");
 			});
 			
+			var names = ['Sandy', 'Tom', 'Bob', 'Michael', 'Kevin', 'Christy', 'Jessica', 'May'];
+
+			
 			function btnClick(){
 				$('#generatedname').text('yay');
+				$('#generatedname').text(names[Math.floor(Math.random()*names.length)]);
 			}
 		</script>
 		
