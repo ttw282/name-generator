@@ -9,7 +9,30 @@
 				//alert("hello!");
 			});
 
-			var commonlastnames = [{char:'王', pinyin:'wang'}, {char:'李', pinyin:'li'}, {char:'张', pinyin:'zhang'}, {char:'陈', pinyin:'chen'}, {char:'杨', pinyin:'yang'}]
+			var commonlastnames = [
+			{char:'王', pinyin:'wang'}, 
+			{char:'李', pinyin:'li'}, 
+			{char:'张', pinyin:'zhang'}, 
+			{char:'陈', pinyin:'chen'}, 
+			{char:'杨', pinyin:'yang'}, 
+			{char:'黄', pinyin:'huang'}, 
+			{char:'徐', pinyin:'xu'}, 
+			{char:'孙', pinyin:'sun'}, 
+			{char:'马', pinyin:'ma'}, 
+			{char:'胡', pinyin:'hu'}, 
+			{char:'郭', pinyin:'guo'}, 
+			{char:'邓', pinyin:'deng'}, 
+			{char:'彭', pinyin:'peng'}, 
+			{char:'田', pinyin:'tian'}, 
+			{char:'任', pinyin:'ren'}, 
+			{char:'范', pinyin:'fan'}, 
+			{char:'白', pinyin:'bai'}, 
+			{char:'秦', pinyin:'qin'}, 
+			{char:'孔', pinyin:'kong'}, 
+			{char:'艾', pinyin:'ai'}, 
+			{char:'倪', pinyin:'ni'}, 
+			{char:'欧阳', pinyin:'ouyang'}, 
+			{char:'蒋', pinyin:'jiang'}]
 			
 			function btnClick(){
 				var lastname = $('#lastnametxt').val();
@@ -20,10 +43,13 @@
 				var result = "";
 				var firstletter = lastname[0];
 				commonlastnames.forEach(function(item){
-					if(item.pinyin[0] == firstletter){
-						result += item.char;
+					if(item.pinyin[0].toLowerCase() == firstletter.toLowerCase()){
+						result = item.char;
 					}
 				});
+				if(result == ""){
+					result = commonlastnames[Math.floor(Math.random()*commonlastnames.length)].char;
+				}
 				
 				return result;
 			}
