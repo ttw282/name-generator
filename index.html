@@ -39,6 +39,20 @@
 				var firstname = $('#firstnametxt').val();
 				var numcharstotal = $('#numcharsdropdown').val();
 				var gender = $('#genderdropdown').val();
+				
+				var errors = "";
+				if(lastname == null || lastname == undefined || lastname == ""){
+					errors += 'Please enter a last name.\n';
+				}
+				if(firstname == null || firstname == undefined || firstname == ""){
+					errors += 'Please enter a first name.\n';
+				}
+				if(errors != ""){
+					$('#errors').text(errors);
+					return;
+				}
+				
+				
 				var processedlastname = processLastName(lastname);
 				var processedfirstname = processFirstName(firstname);
 				$('#generatedname').text(processedlastname + processedfirstname);
@@ -47,11 +61,14 @@
 			function processLastName(lastname){
 				var result = "";
 				var firstletter = lastname[0];
-				commonlastnames.forEach(function(item){
-					if(item.pinyin[0].toLowerCase() == firstletter.toLowerCase()){
-						result = item.char;
-					}
-				});
+				if(firstletter != null && firstletter != undefined){
+					commonlastnames.forEach(function(item){
+						if(item.pinyin[0].toLowerCase() == firstletter.toLowerCase()){
+							result = item.char;
+						}
+					});
+				}
+				
 				if(result == ""){
 					result = commonlastnames[Math.floor(Math.random()*commonlastnames.length)].char;
 				}
@@ -127,6 +144,11 @@
 	<tr>
 		<td colspan="2">
 			<label id='generatedname'>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<label style="color:red" id='errors'>
 		</td>
 	</tr>
 	</table>
