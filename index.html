@@ -8,7 +8,7 @@
 			var chinesechars;
 			var commonlastnames;
 			$( document ).ready(function() {
-				$.get("http://ccdb.hemiola.com/characters?fields=kMandarin,string,kTotalStrokes&filter=gb+simplified", function(data, status){
+				$.get("http://ccdb.hemiola.com/characters?fields=kMandarin,string,kTotalStrokes,kDefinition&filter=gb+simplified", function(data, status){
 					chinesechars = data;
 					
 					chinesechars.forEach(function(item){
@@ -91,7 +91,7 @@
 				if(firstletter != null && firstletter != undefined){
 					commonlastnames.forEach(function(item){
 						if(item.pinyin[0].toLowerCase() == firstletter.toLowerCase()){
-							result = item.char + " (" + item.pinyin + ")";
+							result = item.char + " (" + item.pinyin + ") ";
 						}
 					});
 				}
@@ -112,6 +112,8 @@
 				
 				var secondchar = "";
 				var thirdchar = "";
+				
+				var desc = "";
 				
 				if(gender == "female"){
 					chinesechars.forEach(function(item){
@@ -136,22 +138,25 @@
 				//make sure theres enough for female too!
 				if(filteredsecondchars.length != 0){
 					var item = filteredsecondchars[Math.floor(Math.random()*filteredsecondchars.length)];
-					secondchar = item.string + " (" + item.kMandarin.toLowerCase() + ")";
+					secondchar = item.string + " (" + item.kMandarin.toLowerCase() + ") ";
+					desc += item.kDefinition + " || ";
 				}
 				else{
 					var item = filteredthirdchars[Math.floor(Math.random()*filteredthirdchars.length)];
-					secondchar = item.string + " (" + item.kMandarin.toLowerCase() + ")";
+					secondchar = item.string + " (" + item.kMandarin.toLowerCase() + ") ";
+					desc += item.kDefinition + " || ";
 				}
 				
 				
 				
 				if(numcharstotal == 3){
 					var item = filteredthirdchars[Math.floor(Math.random()*filteredthirdchars.length)];
-					thirdchar = item.string + " (" + item.kMandarin.toLowerCase() + ")";
+					thirdchar = item.string + " (" + item.kMandarin.toLowerCase() + ") ";
+					desc += item.kDefinition + " ";
 				}
 
 				
-				return secondchar + thirdchar;
+				return secondchar + thirdchar + desc;
 			}
 		</script>
 		
