@@ -5,14 +5,13 @@
 		
 		<script>
 			$( document ).ready(function() {
-				alert("hello!");
+				//alert("hello!");
 			});
 			
 			var names = ['Sandy', 'Tom', 'Bob', 'Michael', 'Kevin', 'Christy', 'Jessica', 'May'];
 
 			
 			function btnClick(){
-				$('#generatedname').text('yay');
 				$('#generatedname').text(names[Math.floor(Math.random()*names.length)]);
 			}
 		</script>
@@ -20,13 +19,61 @@
 	</head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<body>
-		<input id="chinesenametxt" type="text" class="form-control"/>
-		<input id='criteria1' type="text" class="form-control"/>
-		<select id='genderdropdown' class="form-control">
-		<option value="Male">Male</option>
-		<option value="Female">Female</option>
+	
+	<table class="table table-bordered" style="text-align:center">
+	<tr>
+		<td>
+		Last Name:
+		</td>
+		<td>
+			<input id="lastnametxt"type="text" class="form-control"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		First Name:
+		</td>
+		<td>
+			<input id="lastnametxt"type="text" class="form-control"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		Num chars total in Chinese name: 
+		</td>
+		<td>
+		
+		<select id='numcharsdropdown' class="form-control">
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
 		</select>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Gender:
+		</td>
+		<td>
+			<select id='genderdropdown' class="form-control">
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">
 		<button id="submitbtn" class="btn btn-primary" onclick="btnClick()">Generate</button>
-		<label id='generatedname'>
-	</body>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<label id='generatedname'>
+		</td>
+	</tr>
+	</table>
 </html>
