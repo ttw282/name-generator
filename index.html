@@ -8,7 +8,7 @@
 			var chinesechars;
 			var commonlastnames;
 			$( document ).ready(function() {
-				$.get("http://ccdb.hemiola.com/characters?fields=kMandarin,string,kTotalStrokes,kDefinition&filter=gb+simplified", function(data, status){
+				$.get("http://ccdb.hemiola.com/characters?fields=kMandarin,string,kTotalStrokes,kDefinition&filter=simplified", function(data, status){
 					chinesechars = data;
 					
 					chinesechars.forEach(function(item){
@@ -18,9 +18,17 @@
 						if(
 						item.kMandarin == "MEI2" || 
 						item.kMandarin == "MEI3" ||
+						item.kMandarin == "FANG1" ||
 						item.kMandarin == "LI4" || 
+						item.kMandarin == "MIN3" || 
 						item.kMandarin == "JIE2" || 
 						item.kMandarin == "LING2" || 
+						item.kMandarin == "XIA2" || 
+						item.kMandarin == "YING1" || 
+						item.kMandarin == "JUAN4" || 
+						item.kMandarin == "YAN4" || 
+						item.kMandarin == "GUI4" || 
+						item.kMandarin == "PING2" || 
 						item.kMandarin == "JING4" || 
 						item.kMandarin == "AI4" || 
 						item.kMandarin == "JING4" || 
