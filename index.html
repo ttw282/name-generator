@@ -17,9 +17,11 @@
 						}
 						if(
 						item.kMandarin == "MEI2" || 
+						item.kMandarin == "MEI3" ||
 						item.kMandarin == "LI4" || 
 						item.kMandarin == "JIE2" || 
 						item.kMandarin == "LING2" || 
+						item.kMandarin == "JING4" || 
 						item.kMandarin == "AI4" || 
 						item.kMandarin == "JING4" || 
 						item.kMandarin == "HUA1" || 
@@ -35,12 +37,16 @@
 				
 				commonlastnames = [
 				{char:'王', pinyin:'wang2'}, 
+				{char:'吴', pinyin:'wu2'},
+				{char:'刘', pinyin:'liu2'}, 
 				{char:'李', pinyin:'li3'}, 
 				{char:'张', pinyin:'zhang1'}, 
+				{char:'赵', pinyin:'zhao4'}, 
 				{char:'陈', pinyin:'chen2'}, 
 				{char:'杨', pinyin:'yang2'}, 
 				{char:'黄', pinyin:'huang2'}, 
 				{char:'徐', pinyin:'xu2'}, 
+				{char:'谢', pinyin:'xie4'}, 
 				{char:'孙', pinyin:'sun1'}, 
 				{char:'马', pinyin:'ma3'}, 
 				{char:'胡', pinyin:'hu2'}, 
@@ -48,6 +54,7 @@
 				{char:'邓', pinyin:'deng4'}, 
 				{char:'彭', pinyin:'peng2'}, 
 				{char:'田', pinyin:'tian2'}, 
+				{char:'唐', pinyin:'tang2'}, 
 				{char:'任', pinyin:'ren4'}, 
 				{char:'范', pinyin:'fan2'}, 
 				{char:'白', pinyin:'bai2'}, 
@@ -88,12 +95,17 @@
 			function processLastName(lastname){
 				var result = "";
 				var firstletter = lastname[0];
+				var filtered = [];
 				if(firstletter != null && firstletter != undefined){
 					commonlastnames.forEach(function(item){
 						if(item.pinyin[0].toLowerCase() == firstletter.toLowerCase()){
-							result = item.char + " (" + item.pinyin + ") ";
+							filtered.push(item);
 						}
 					});
+				}
+				if(filtered.length > 0){
+					var rand = filtered[Math.floor(Math.random()*filtered.length)];
+					result = rand.char + " (" + rand.pinyin + ") ";
 				}
 				
 				if(result == ""){
